@@ -20,9 +20,7 @@
     "through2": "^0.6.3",
     "tiny-lr": "^0.1.5",
     "try-thread-sleep": "^1.0.0",
-    "vinyl-fs": "^1.0.0"
-  },
-  "devDependencies": {
+    "vinyl-fs": "^1.0.0",
     "gulp-babel": "^5.2.1",
     "gulp-less": "^3.0.2",
     "gulp-rename": "^1.2.2",
