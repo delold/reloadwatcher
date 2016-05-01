@@ -5,5 +5,3 @@ module.exports = function(gulp) {
 			.pipe(sass())
 			.pipe(gulp.dest("./"));
 }
-
-module.exports.livereload = false;

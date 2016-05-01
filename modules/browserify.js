@@ -1,11 +1,11 @@
-var babel = require("gulp-babel");
+var browser = require('gulp-browser');
 var rename = require("gulp-rename");
 
 module.exports = function(gulp) {
-	return gulp.src("**/*.jsx")
-			.pipe(babel())
+	return gulp.src("**/*.npm.js")
+			.pipe(browser.browserify())
 			.pipe(rename(function(path) {
-				path.basename = path.basename.replace(".jsx", "js");
+				path.basename = path.basename.replace(".npm", "");
 				return path;
 			}))
 			.pipe(gulp.dest("./"));
