@@ -24,6 +24,7 @@ module.exports = function() {
 		.option("--list", "list all plugins")
 		.option("--quiet", "run without any output")
 		.option("--noscript", "dont add livereload script")
+		.option("--target <target>", "watch certain paths", function(i) { return i.split(",") })
 		.parse(process.argv)
 
 	let httpserver
@@ -38,6 +39,7 @@ module.exports = function() {
 	let build = commander.build !== undefined
 	let httpenabled = commander.noserver == undefined
 	let uselrmiddleware = commander.noscript == undefined
+	let watchTarget = (commander.target !== undefined) ? commander.target : "."
 
 	if(cwd === undefined || cwd.length <= 0) {
 		cwd = process.cwd()
@@ -62,7 +64,7 @@ module.exports = function() {
 	function bindWatcher() {
 		moduleHandler.load(compilers)
 
-		watcher = chokidar.watch(".", {
+		watcher = chokidar.watch(watchTarget, {
 			persistent: true,
 			cwd: cwd,
 			ignored: [/(^\.|[\/\\]\.)(?!$)/, "**/node_modules/**", "**/bower_components/**", "**/vendor/**"]
